@@ -85,7 +85,7 @@ kornia = [
 ]
 loggers = [
     "tensorboard>=2.13.0",
-    "protobuf>=3.20.0,<4.0.0",  # Pins protobuf below 4.x to avoid TensorBoard descriptor crash with protobuf>=4 (see #844)
+    "protobuf>=3.20.0,!=4.24.0",  # Avoid protobuf version to avoid TensorBoard descriptor crash with protobuf 4.24 (see #844)
     "wandb",
     "mlflow",
     "clearml",

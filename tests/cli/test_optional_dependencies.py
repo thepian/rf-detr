@@ -42,14 +42,13 @@ class TestOptionalDependencies:
                 return True
         return False
 
-    def test_loggers_extra_pins_protobuf_below_4(self):
-        """loggers extra must constrain protobuf for TensorBoard compatibility."""
+    def test_loggers_extra_does_not_pin_protobuf_below_4(self):
+        """loggers extra must not pin protobuf <4 — would block wandb 0.26+ which requires protobuf>4.21."""
         requirements = [Requirement(dep) for dep in self.read_loggers_extra()]
         protobuf_requirements = [req for req in requirements if req.name == "protobuf"]
-        assert protobuf_requirements, "loggers extra must include protobuf dependency"
-
-        assert any(self.has_upper_bound_below_4(req) for req in protobuf_requirements), (
-            "protobuf dependency must include an upper bound below 4.0.0"
+        assert not any(self.has_upper_bound_below_4(req) for req in protobuf_requirements), (
+            "loggers extra must not pin protobuf below 4.0.0; doing so makes [loggers] + wandb>=0.26 unsatisfiable. "
+            "Modern tensorboard (>=2.13) works with protobuf 4-7."
         )
 
     @pytest.mark.parametrize(
