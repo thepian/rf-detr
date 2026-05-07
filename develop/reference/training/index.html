@@ -3094,6 +3094,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#rfdetr.training.callbacks.coco_eval.COCOEvalCallback(max_eval_orig_size)" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;max_eval_orig_size
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#rfdetr.training.callbacks.coco_eval.COCOEvalCallback-functions" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -4399,6 +4410,17 @@
     <span class="md-ellipsis">
       
         <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;log_per_class_metrics
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rfdetr.training.callbacks.coco_eval.COCOEvalCallback(max_eval_orig_size)" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-parameter"></code>&nbsp;max_eval_orig_size
       
     </span>
   </a>
@@ -6579,6 +6601,27 @@ always computed when <code>trainer.test()</code> is called.</p>
                   <code>True</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+<h2 id="rfdetr.training.callbacks.coco_eval.COCOEvalCallback(max_eval_orig_size)" class="doc doc-heading doc-heading-parameter">                  <code>max_eval_orig_size</code>
+<a href="#rfdetr.training.callbacks.coco_eval.COCOEvalCallback(max_eval_orig_size)" class="headerlink" title="Permanent link">&para;</a></h2>            </td>
+            <td>
+                  <code><span title="int">int</span> | None</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Cap the longer side of each image's original size to
+this value (in pixels) before upsampling masks for COCO evaluation.
+Reduces mask buffer memory proportionally to <code>(cap/orig)²</code> with
+negligible impact on mAP since the model input is already much
+smaller (e.g. SegNano trains at 312 px). <code>None</code> disables the cap
+and evaluates at full original resolution. Defaults to <code>None</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -6605,7 +6648,7 @@ always computed when <code>trainer.test()</code> is called.</p>
 
 
 <h3 id="rfdetr.training.callbacks.coco_eval.COCOEvalCallback.__init__" class="doc doc-heading">
-<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">max_dets</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">segmentation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eval_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">log_per_class_metrics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_notebook</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+<code class="doc-symbol doc-symbol-heading doc-symbol-method"></code>            <code class="highlight language-python"><span class="fm">__init__</span><span class="p">(</span><span class="n">max_dets</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">segmentation</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">eval_interval</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">log_per_class_metrics</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">in_notebook</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_eval_orig_size</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 <a href="#rfdetr.training.callbacks.coco_eval.COCOEvalCallback.__init__" class="headerlink" title="Permanent link">&para;</a></h3>
 
